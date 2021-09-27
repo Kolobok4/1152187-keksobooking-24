@@ -20,7 +20,7 @@ const getRandomFloat = (min, max, floatPoint) => {
 
   return parseFloat((Math.random() * (max - min) + min).toFixed(floatPoint));
 
-}
+};
 
 getRandomFloat();
 /*Метод форматирует число, используя запись с фиксированной запятой
