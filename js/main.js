@@ -1,4 +1,4 @@
-let getRandomInt = (min, max) => {
+const getRandomInt = (min, max) => {
 
   if (min >= max || min < 0) {
     throw new RangeError('Недопустимый диапазон чисел')
@@ -10,7 +10,7 @@ let getRandomInt = (min, max) => {
 /*Получение случайного целого числа в заданном интервале, включительно
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random*/
 
-let getRandomFloat = (min, max, floatPoint) => {
+const getRandomFloat = (min, max, floatPoint) => {
 
   if (min >= max || min < 0) {
     throw new Error('Некорректный диапазон чисел');
