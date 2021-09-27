@@ -1,7 +1,7 @@
 const getRandomInt = (min, max) => {
 
   if (min >= max || min < 0) {
-    throw new RangeError('Недопустимый диапазон чисел')
+    throw new RangeError('Недопустимый диапазон чисел');
   };
 
   return Math.floor(Math.random() * (max - min + 1)) + min;
