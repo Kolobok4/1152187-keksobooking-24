@@ -8,6 +8,7 @@ const getRandomInt = (min, max) => {
 
 };
 
+getRandomInt();
 /*Получение случайного целого числа в заданном интервале, включительно
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random*/
 
@@ -21,6 +22,7 @@ const getRandomFloat = (min, max, floatPoint) => {
 
 }
 
+getRandomFloat();
 /*Метод форматирует число, используя запись с фиксированной запятой
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
 Функция принимает строку в качестве аргумента и возвращает десятичное число
