@@ -87,8 +87,8 @@ const createRandomeArray = () => {
     },
     offer: {
       title: 'Сдаётся',
-      adress: [RANDOM_LAT, RANDOM_LNG],
-      price: getRandomInt(0, 10000),
+      adress: `${RANDOM_LAT}, ${RANDOM_LNG}`,
+      price: getRandomInt(0, 100),
       type: TYPE[getRandomInt(0, TYPE.length - 1)],
       rooms: getRandomInt(0, 5),
       guests: getRandomInt(0, 10),
