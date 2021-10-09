@@ -1,18 +1,6 @@
-const AVATAR = [
-  'img/avatars/user01.png',
-  'img/avatars/user02.png',
-  'img/avatars/user03.png',
-  'img/avatars/user04.png',
-  'img/avatars/user05.png',
-  'img/avatars/user06.png',
-  'img/avatars/user07.png',
-  'img/avatars/user08.png',
-  'img/avatars/user09.png',
-  'img/avatars/user10.png',
-];
 
 const TITLE = [
-  'Оренда',
+  'Аренда',
   'Продажа',
 ];
 
@@ -99,41 +87,41 @@ const getRandomFloat = (min, max, floatPoint) => {
   return parseFloat((Math.random() * (max - min) + min).toFixed(floatPoint));
 };
 
-const shuffleArray = (array) => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-};
-
-const getAuthorHousing = (index) => {
+const getAuthorArray = (index) => {
   index = index + 1;
   return { avatar: `img/avatars/user${(index <= 9) ? `0${  index}` : index  }.png`};
 };
 
-const createRandomeArray = () => ({
-  author: {
-    avatar: getAuthorHousing(),
-  },
-  offer: {
-    title: TITLE[getRandomInt(0, TITLE.length - 1)],
-    adress: `${getRandomFloat(...LOCATION_LAT)}, ${getRandomFloat(...LOCATION_LNG)}`,
-    price: getRandomInt(Price.MIN, Price.MAX),
-    type: TYPE[getRandomInt(0, TYPE.length - 1)],
-    rooms: getRandomInt(Rooms.MIN, Rooms.MAX),
-    guests: getRandomInt(Guests.MIN, Guests.MAX),
-    checkin: CHECKIN[getRandomInt(0, CHECKIN.length - 1)],
-    checkout: CHECKOUT[getRandomInt(0, CHECKOUT.length - 1)],
-    features: shuffleArray(FEATURES).slice(0, getRandomInt(0, FEATURES.length)),
-    description: DESCRIPTION[getRandomInt(0, DESCRIPTION.length - 1)],
-    photos: shuffleArray(PHOTOS).slice(0, getRandomInt(0, PHOTOS.length)),
-  },
-  location: {
-    lat: `${getRandomFloat(...LOCATION_LAT)}`,
-    lng: `${getRandomFloat(...LOCATION_LNG)}`,
-  },
+const createOfferArray = () => ({
+  title: TITLE[getRandomInt(0, TITLE.length - 1)],
+  adress: `${getRandomFloat(...LOCATION_LAT)}, ${getRandomFloat(...LOCATION_LNG)}`,
+  price: getRandomInt(Price.MIN, Price.MAX),
+  type: TYPE[getRandomInt(0, TYPE.length - 1)],
+  rooms: getRandomInt(Rooms.MIN, Rooms.MAX),
+  guests: getRandomInt(Guests.MIN, Guests.MAX),
+  checkin: CHECKIN[getRandomInt(0, CHECKIN.length - 1)],
+  checkout: CHECKOUT[getRandomInt(0, CHECKOUT.length - 1)],
+  features: FEATURES.slice(0, getRandomInt(0, FEATURES.length)),
+  description: DESCRIPTION[getRandomInt(0, DESCRIPTION.length - 1)],
+  photos: PHOTOS.slice(0, getRandomInt(0, PHOTOS.length)),
 });
 
-const similarRandomArray = Array.from({length: SIMILAR_COUNT}, createRandomeArray);
+const createLocationArray = () => ({
+  lat: `${getRandomFloat(...LOCATION_LAT)}`,
+  lng: `${getRandomFloat(...LOCATION_LNG)}`,
+});
 
-console.log(similarRandomArray);
+// eslint-disable-next-line no-unused-vars
+const getCreateArray = () => {
+  const arrayData = [];
+  // eslint-disable-next-line id-length
+  for (let i = 0; i <=  SIMILAR_COUNT- 1; i++) {
+    arrayData.push({
+      author: getAuthorArray(i),
+      offer: createOfferArray(),
+      location: createLocationArray(),
+    });
+  }
+  return arrayData;
+};
+
