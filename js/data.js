@@ -94,7 +94,7 @@ const createLocationArray = () => ({
 const getCreateArray = () => {
   const arrayData = [];
   // eslint-disable-next-line id-length
-  for (let i = 0; i <=  SIMILAR_COUNT- 1; i++) {
+  for (let i = 0; i <=  SIMILAR_COUNT - 1; i++) {
     arrayData.push({
       author: getAuthorArray(i),
       offer: createOfferArray(),
@@ -103,5 +103,7 @@ const getCreateArray = () => {
   }
   return arrayData;
 };
-
+export {TYPE};
+export {FEATURES};
 export {getCreateArray};
+
