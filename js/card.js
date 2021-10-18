@@ -47,9 +47,20 @@ const featuresList = (element, selector, features) => {
   }
 };
 
+const textDescription = (element, selector, text) => {
+  const container = element.querySelector(selector);
+
+  if (text) {
+    container.textContent = text;
+  } else {
+    container.remove();
+  }
+};
+
+
 similarCards.forEach((card) => {
   const offer = card.offer;
-  const author= card.author;
+  const author = card.author;
   const cardElement = similarTemplate.cloneNode(true);
   cardElement.querySelector('.popup__title').textContent = offer.title;
   cardElement.querySelector('.popup__text--address').textContent = offer.adress;
@@ -57,13 +68,12 @@ similarCards.forEach((card) => {
   cardElement.querySelector('.popup__type').textContent = buildingType[offer.type];
   cardElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
   cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
-  cardElement.querySelector('.popup__description').textContent = offer.description;
   cardElement.querySelector('.popup__avatar').src = author.avatar;
   photosList(cardElement, '.popup__photos', card.offer.photos);
   featuresList(cardElement, '.popup__features', card.offer.features);
+  textDescription(cardElement, '.popup__description', card.offer.description);
+
   similarFragment.appendChild(cardElement);
 });
 
 mapElement.appendChild(similarFragment);
-
-
