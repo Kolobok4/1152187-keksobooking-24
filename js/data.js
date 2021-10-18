@@ -103,7 +103,6 @@ const getCreateArray = () => {
   }
   return arrayData;
 };
-export {TYPE};
-export {FEATURES};
+
 export {getCreateArray};
 
