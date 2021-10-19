@@ -1,3 +1,3 @@
-import {getCreateArray} from './data.js';
+import './card.js';
 
-getCreateArray();
+
