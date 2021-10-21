@@ -3,7 +3,7 @@ const adForm = document.querySelectorAll('.ad-form');
 const formFieldset = document.querySelectorAll('fieldset');
 
 // eslint-disable-next-line no-unused-vars
-const formDisabled = () => {
+const adFormDisabled = () => {
   adForm.forEach((element) => {
     element.classList.add('ad-form--disabled');
   });
@@ -13,7 +13,7 @@ const formDisabled = () => {
 };
 
 // eslint-disable-next-line no-unused-vars
-const formActivation = () => {
+const adFormEnabled = () => {
   adForm.forEach((element) => {
     element.classList.remove('ad-form--disabled');
   });
