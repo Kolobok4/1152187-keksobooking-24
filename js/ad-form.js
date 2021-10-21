@@ -1,4 +1,3 @@
-
 const adForm = document.querySelectorAll('.ad-form');
 const formFieldset = document.querySelectorAll('fieldset');
 
