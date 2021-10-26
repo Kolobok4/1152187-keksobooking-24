@@ -1,5 +1,5 @@
 import {mapFilters} from '../map-filters.js';
-import {adForm} from '../form.js';
+import {adForm} from '../ad-form.js';
 
 const disabledFields = document.querySelectorAll('select.map__filter, fieldset');
 
