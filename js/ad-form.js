@@ -78,3 +78,5 @@ const onRoomNumberChange = () => {
   validateRooms();
 };
 roomNumber.addEventListener('change', onRoomNumberChange);
+
+export {adForm};
