@@ -1,1 +1,2 @@
-import './card.js';
+import './popup.js';
+import './ad-form.js';

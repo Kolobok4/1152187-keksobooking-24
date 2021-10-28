@@ -254,7 +254,9 @@ fieldset {
   font-size: 28px;
   font-weight: 700;
 }
-
+.ad-form__element input:invalid, .ad-form__element select:invalid, .ad-form__element textarea:invalid {
+  border: 1px solid #ff0000;
+}
 .ad-form {
   display: -webkit-box;
   display: -ms-flexbox;
