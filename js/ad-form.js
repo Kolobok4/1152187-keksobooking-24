@@ -39,14 +39,14 @@ titleAd.addEventListener('input', () =>  {
   titleAd.reportValidity();
 });
 
-const onAdTypeChange = () => {
+const onAdPriceChange = () => {
   const priceSelect = priceOffers[typeAd.value];
   priceAd.placeholder = priceSelect;
   priceAd.min = priceSelect;
 
 };
 
-typeAd.addEventListener('change', onAdTypeChange);
+typeAd.addEventListener('change', onAdPriceChange);
 
 const onAdTimeChange = (evt) => {
   timeOut.value = evt.target.value;
