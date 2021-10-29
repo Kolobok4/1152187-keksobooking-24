@@ -28,7 +28,9 @@ const ROOMS_GUESTS = {
 
 
 titleAd.addEventListener('input', () =>  {
+
   const valueLength = titleAd.value.length;
+
   if (valueLength < MIN_TITLE_LENGTH) {
     titleAd.setCustomValidity(`Заголовок должен состоять минимум из 30-ти символов. Ещё ${  MIN_TITLE_LENGTH - valueLength } симв.`);
   } else if (valueLength > MAX_TITLE_LENGTH) {
@@ -40,7 +42,9 @@ titleAd.addEventListener('input', () =>  {
 });
 
 const onAdPriceChange = () => {
+
   const priceSelect = priceOffers[typeAd.value];
+
   priceAd.placeholder = priceSelect;
   priceAd.min = priceSelect;
 
@@ -60,11 +64,9 @@ const validateRooms = () => {
   const roomValue = roomNumber.value;
 
   guestNumber.forEach((guests) => {
-    // Метод indexOf() возвращает первый индекс,
-    // по которому данный элемент может быть найден в массиве или –1
-    // indexOf ищет в массиве указанный элемент и возвращает его позицию
+
     const isDisabled = (ROOMS_GUESTS[roomValue].indexOf(guests.value) === -1);
-    // добавляется Boolean атрибут selected к пункту списка option если value равно первому элементу в массиве
+
     guests.selected = ROOMS_GUESTS[roomValue][0] === guests.value;
     guests.disabled = isDisabled;
     guests.hidden = isDisabled;
@@ -76,6 +78,7 @@ validateRooms();
 const onRoomNumberChange = () => {
   validateRooms();
 };
+
 roomNumber.addEventListener('change', onRoomNumberChange);
 
 export {adForm};
