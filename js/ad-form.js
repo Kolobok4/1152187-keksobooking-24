@@ -7,6 +7,8 @@ const timeOut = adForm.querySelector('#timeout');
 const timeAd = adForm.querySelector('.ad-form__element--time');
 const guestNumber = document.querySelectorAll('#capacity > option');
 const roomNumber = document.querySelector('#room_number');
+const addressAd = document.querySelector('#address');
+const resetButton = document.querySelector('.ad-form__reset');
 
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
@@ -81,4 +83,4 @@ const onRoomNumberChange = () => {
 
 roomNumber.addEventListener('change', onRoomNumberChange);
 
-export {adForm};
+export {adForm, addressAd, resetButton};

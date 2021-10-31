@@ -77,3 +77,5 @@ similarCards.forEach((card) => {
 });
 
 mapElement.appendChild(similarFragment);
+
+export {similarCards};
