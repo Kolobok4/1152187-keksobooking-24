@@ -1,5 +1,6 @@
 import {addressAd, resetButton} from './ad-form.js';
 import {similarCards} from './popup.js';
+import {setDisabledState, toggleClassDisabled} from './utils/set-disabled-state.js';
 
 const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 
@@ -16,7 +17,15 @@ const DefaultCoordinate = {
   LNG: 139.69171,
 };
 
+setDisabledState();
+toggleClassDisabled();
+
 const map = L.map('map-canvas')
+  .on('load', () => {
+    setDisabledState();
+    toggleClassDisabled();
+    addressAd.value = `${DefaultCoordinate.LAT  }, ${ DefaultCoordinate.LNG}`;
+  })
   .setView({
     lat: DefaultCoordinate.LAT,
     lng: DefaultCoordinate.LNG,
@@ -47,7 +56,6 @@ const mainPinMarker = L.marker({
 
 mainPinMarker.addTo(map);
 
-addressAd.value = `${DefaultCoordinate.LAT  }, ${ DefaultCoordinate.LNG}`;
 
 mainPinMarker.addEventListener('moveend', (evt) => {
   addressAd.value = `${evt.target.getLatLng().lat.toFixed(FIXED_POINT)  }, ${  evt.target.getLatLng().lng.toFixed(FIXED_POINT)}`;
@@ -65,14 +73,17 @@ resetButton.addEventListener('click', () => {
   }, MAP_ZOOM);
 });
 
-similarCards.forEach((card) => {
+const createMarker = (card) => {
+
   const pinIcon = L.icon({
     iconUrl: PIN_ICON,
     iconSize: PIN_ICON_SIZE,
     iconAnchor: PIN_ICON_SIZE,
   });
+
   const lat = card.location.lat;
   const lng = card.location.lng;
+
   const marker = L.marker(
     {
       lat,
@@ -85,4 +96,8 @@ similarCards.forEach((card) => {
 
   marker
     .addTo(map);
+};
+
+similarCards.forEach((card) => {
+  createMarker(card);
 });
