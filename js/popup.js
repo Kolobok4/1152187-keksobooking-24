@@ -1,4 +1,3 @@
-import {getCreateArray} from './data.js';
 
 const buildingType = {
   flat: 'Квартира',
@@ -8,13 +7,10 @@ const buildingType = {
   hotel: 'Отель',
 };
 
-const mapElement = document.querySelector('.map__canvas');
 const similarTemplate = document.querySelector('#card')
   .content
   .querySelector('.popup');
 
-const similarFragment = document.createDocumentFragment();
-const similarCards = getCreateArray();
 
 const photosList = (element, selector, photos) => {
   const container = element.querySelector(selector);
@@ -57,8 +53,7 @@ const textDescription = (element, selector, text) => {
   }
 };
 
-
-similarCards.forEach((card) => {
+const renderPopup  = (card) => {
   const offer = card.offer;
   const author = card.author;
   const cardElement = similarTemplate.cloneNode(true);
@@ -73,9 +68,8 @@ similarCards.forEach((card) => {
   featuresList(cardElement, '.popup__features', card.offer.features);
   textDescription(cardElement, '.popup__description', card.offer.description);
 
-  similarFragment.appendChild(cardElement);
-});
+  return cardElement;
 
-mapElement.appendChild(similarFragment);
+};
 
-export {similarCards};
+export {renderPopup};

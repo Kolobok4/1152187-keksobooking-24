@@ -28,6 +28,10 @@ const ROOMS_GUESTS = {
   '100': ['0'],
 };
 
+const DefaultCoordinate = {
+  LAT: 35.68950,
+  LNG: 139.69171,
+};
 
 titleAd.addEventListener('input', () =>  {
 
@@ -59,7 +63,6 @@ const onAdTimeChange = (evt) => {
   timeIn.value = evt.target.value;
 };
 
-
 timeAd.addEventListener('change', onAdTimeChange);
 
 const validateRooms = () => {
@@ -83,4 +86,4 @@ const onRoomNumberChange = () => {
 
 roomNumber.addEventListener('change', onRoomNumberChange);
 
-export {adForm, addressAd, resetButton};
+export {adForm, addressAd, resetButton, DefaultCoordinate};
