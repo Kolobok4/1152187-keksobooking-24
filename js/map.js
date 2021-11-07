@@ -1,8 +1,5 @@
-import  './utils/reset-map.js';
-
-import {addressAd, DefaultCoordinate} from './ad-form.js';
-import {renderPopup} from './popup.js';
-import {getCreateArray} from './data.js';
+import {addressAd, DefaultCoordinate} from './form-validate.js';
+import {renderSimilarPopup} from './popup.js';
 import {setDisabledState, toggleClassDisabled} from './utils/set-disabled-state.js';
 
 const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -47,14 +44,15 @@ const mainPinIcon = L.icon({
   iconAnchor: MAIN_PIN_ANCHOR_SIZE,
 });
 
-const mainPinMarker = L.marker({
-  lat: DefaultCoordinate.LAT,
-  lng: DefaultCoordinate.LNG,
-},
-{
-  draggable: true,
-  icon: mainPinIcon,
-},
+const mainPinMarker = L.marker(
+  {
+    lat: DefaultCoordinate.LAT,
+    lng: DefaultCoordinate.LNG,
+  },
+  {
+    draggable: true,
+    icon: mainPinIcon,
+  },
 );
 
 mainPinMarker.addTo(map);
@@ -64,32 +62,33 @@ mainPinMarker.addEventListener('moveend', (evt) => {
   addressAd.value = `${evt.target.getLatLng().lat.toFixed(FIXED_POINT)  }, ${  evt.target.getLatLng().lng.toFixed(FIXED_POINT)}`;
 });
 
-const mapPopup = getCreateArray();
-
-mapPopup.forEach((card) => {
-
-  const pinIcon = L.icon({
+const pinIcon = L.icon(
+  {
     iconUrl: PIN_ICON,
     iconSize: PIN_ICON_SIZE,
     iconAnchor: PIN_ANCHOR_SIZE,
   });
 
-  const lat = card.location.lat;
-  const lng = card.location.lng;
-
+const getPoint = (card) => {
   const marker = L.marker(
     {
-      lat,
-      lng,
+      lat: card.location.lat,
+      lng: card.location.lng,
     },
     {
-      pinIcon,
+      icon: pinIcon,
     },
   );
-
   marker
     .addTo(map)
-    .bindPopup(renderPopup(card));
-});
+    .bindPopup(renderSimilarPopup(card));
+};
 
-export {DefaultCoordinate, map, mainPinMarker, MAP_ZOOM};
+const setPoints = (card) => {
+  card.forEach((element) => {
+    getPoint(element);
+  });
+};
+
+
+export {DefaultCoordinate, map, mainPinMarker, MAP_ZOOM, setPoints};

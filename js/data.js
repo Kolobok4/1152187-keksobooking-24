@@ -1,3 +1,4 @@
+/*
 import {getRandomPositiveInteger} from './utils/get-random-positive-integer.js';
 import {getRandomPositiveFloat} from './utils/get-random-positive-float.js';
 
@@ -105,4 +106,4 @@ const getCreateArray = () => {
 };
 
 export {getCreateArray};
-
+*/

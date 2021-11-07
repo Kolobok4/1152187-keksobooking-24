@@ -53,23 +53,23 @@ const textDescription = (element, selector, text) => {
   }
 };
 
-const renderPopup  = (card) => {
+const renderSimilarPopup  = (card) => {
   const offer = card.offer;
   const author = card.author;
   const cardElement = similarTemplate.cloneNode(true);
   cardElement.querySelector('.popup__title').textContent = offer.title;
-  cardElement.querySelector('.popup__text--address').textContent = offer.adress;
+  cardElement.querySelector('.popup__text--address').textContent = offer.address;
   cardElement.querySelector('.popup__text--price').textContent = `${offer.price}  ₽/ночь`;
   cardElement.querySelector('.popup__type').textContent = buildingType[offer.type];
   cardElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
   cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
   cardElement.querySelector('.popup__avatar').src = author.avatar;
-  photosList(cardElement, '.popup__photos', card.offer.photos);
-  featuresList(cardElement, '.popup__features', card.offer.features);
-  textDescription(cardElement, '.popup__description', card.offer.description);
+  photosList(cardElement, '.popup__photos', offer.photos);
+  featuresList(cardElement, '.popup__features', offer.features);
+  textDescription(cardElement, '.popup__description', offer.description);
 
   return cardElement;
 
 };
 
-export {renderPopup};
+export {renderSimilarPopup};
