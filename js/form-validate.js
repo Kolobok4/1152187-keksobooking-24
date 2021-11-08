@@ -86,4 +86,4 @@ const onRoomNumberChange = () => {
 
 roomNumber.addEventListener('change', onRoomNumberChange);
 
-export {adForm, addressAd, resetButton, DefaultCoordinate};
+export {adForm, addressAd, resetButton, DefaultCoordinate, priceOffers, priceAd, typeAd};

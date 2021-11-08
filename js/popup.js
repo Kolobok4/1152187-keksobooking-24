@@ -13,43 +13,52 @@ const similarTemplate = document.querySelector('#card')
 
 
 const photosList = (element, selector, photos) => {
-  const container = element.querySelector(selector);
 
-  if (photos.length === 0) {
-    container.remove();
+  if (photos) {
+    const photoElement = element.querySelector(selector);
+    const photoFragment = document.createDocumentFragment();
+
+    photos.forEach((photo) => {
+      const popupPhoto = photoElement.querySelector('.popup__photo').cloneNode(true);
+      popupPhoto.src = photo;
+      photoFragment.appendChild(popupPhoto);
+    });
+
+    photoElement.innerHTML = '';
+    photoElement.appendChild(photoFragment);
+  } else {
+
+    element.querySelector(selector).remove();
   }
-  const template = container.querySelector('.popup__photo');
-
-  photos.forEach((link) => {
-    const photoContainer = template.cloneNode();
-    photoContainer.src = link;
-    container.append(photoContainer);
-  });
-  template.remove();
 };
 
 const featuresList = (element, selector, features) => {
-  const container = element.querySelector(selector);
-  const list = container.querySelectorAll('.popup__feature');
 
-  list.forEach((listElement) => {
-    if (!features.some((feature) => listElement.classList.contains(`popup__feature--${feature}`))) {
-      listElement.remove();
-    }
-  });
+  if (features) {
+    const featureElement= element.querySelector(selector);
+    const featureItem = featureElement.querySelector('.popup__feature');
+    const featuresFragment = document.createDocumentFragment();
 
-  if (list.length === 0) {
-    container.remove();
+    features.forEach((feature) => {
+      const popupFeature = featureItem.cloneNode(true);
+      popupFeature.classList.add(`popup__feature--${feature}`);
+      featuresFragment.appendChild(popupFeature);
+    });
+
+    featureElement.innerHTML = '';
+    featureElement.appendChild(featuresFragment);
+  } else {
+    element.querySelector(selector).remove();
   }
+
 };
 
 const textDescription = (element, selector, text) => {
-  const container = element.querySelector(selector);
 
   if (text) {
-    container.textContent = text;
+    element.querySelector(selector).textContent = text;
   } else {
-    container.remove();
+    element.querySelector(selector).remove();
   }
 };
 

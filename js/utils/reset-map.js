@@ -1,4 +1,4 @@
-import {DefaultCoordinate, resetButton} from '../form-validate.js';
+import { DefaultCoordinate, resetButton} from '../form-validate.js';
 import {map, mainPinMarker, MAP_ZOOM} from '../map.js';
 
 
