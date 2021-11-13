@@ -1,6 +1,6 @@
 import {addressAd, DefaultCoordinate} from './form-validate.js';
 import {renderSimilarPopup} from './popup.js';
-import {setDisabledState, toggleClassDisabled} from './utils/set-disabled-state.js';
+import { toggleClassDisabled} from './utils/set-disabled-form.js';
 
 const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const TILE_LAYER_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
@@ -14,22 +14,16 @@ const MAIN_PIN_ANCHOR_SIZE = [26, 52];
 const PIN_ICON_SIZE = [40, 40];
 const PIN_ANCHOR_SIZE = [20, 40];
 
-setDisabledState();
-toggleClassDisabled();
 
-const map = L.map('map-canvas', {
-  closePopupOnClick: false,
-});
-
-map.on('load', () => {
-  setDisabledState();
-  toggleClassDisabled();
-  addressAd.value = `${DefaultCoordinate.LAT  }, ${ DefaultCoordinate.LNG}`;
-});
-map.setView({
-  lat: DefaultCoordinate.LAT,
-  lng: DefaultCoordinate.LNG,
-}, MAP_ZOOM);
+const map = L.map('map-canvas')
+  .on('load', () => {
+    toggleClassDisabled();
+    addressAd.value = `${DefaultCoordinate.LAT  }, ${ DefaultCoordinate.LNG}`;
+  })
+  .setView({
+    lat: DefaultCoordinate.LAT,
+    lng: DefaultCoordinate.LNG,
+  }, MAP_ZOOM);
 
 L.tileLayer(
   TILE_LAYER,
@@ -69,26 +63,33 @@ const pinIcon = L.icon(
     iconAnchor: PIN_ANCHOR_SIZE,
   });
 
-const getPoint = (card) => {
-  const marker = L.marker(
-    {
-      lat: card.location.lat,
-      lng: card.location.lng,
-    },
-    {
-      icon: pinIcon,
-    },
-  );
-  marker
-    .addTo(map)
-    .bindPopup(renderSimilarPopup(card));
+const layerGroup = L.layerGroup().addTo(map);
+
+const removePin = () => {
+  layerGroup.clearLayers();
 };
 
-const setPoints = (card) => {
-  card.forEach((element) => {
-    getPoint(element);
+const createPin = (points) => {
+  points.forEach((point) => {
+    const {location} = point;
+    const marker = L.marker(
+      {
+        lat: location.location.lat,
+        lng: location.location.lng,
+      },
+      {
+        icon: pinIcon,
+      },
+    );
+
+    marker
+      .addTo(layerGroup)
+      .bindPopup(() => renderSimilarPopup(point),
+        {
+          keepInView: true,
+        },
+      );
   });
 };
 
-
-export {DefaultCoordinate, map, mainPinMarker, MAP_ZOOM, setPoints};
+export {DefaultCoordinate, map, mainPinMarker, MAP_ZOOM, createPin, removePin};
