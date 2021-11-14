@@ -6,12 +6,12 @@ const priceFilter = {
     end: 10000,
   },
   'middle': {
-    start: 0,
-    end: 10000,
+    start: 10000,
+    end: 50000,
   },
   'hight': {
-    start: 0,
-    end: 10000,
+    start: 50000,
+    end: Infinity,
   },
 };
 
@@ -23,7 +23,7 @@ const filterSelector  = {
   'housing-rooms': (data, filter) => filter.value === data.offer.rooms.toString(),
   'housing-guests': (data, filter) => filter.value === data.offer.guests.toString(),
   'housing-features': (data, filter) => {
-    const checkListElements = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'));
+    const checkListElements = Array.from(filter.querySelectorAll('input[type="checkbox"]:checked'));
 
     return checkListElements.every((checkbox) => data.offer.features.some((feature) => feature === checkbox.value));
   },
@@ -31,19 +31,20 @@ const filterSelector  = {
 
 const filterData = (data) => {
   const filterOffers = [];
-  let i = 0;
+  let index = 0;
   let result;
 
-  while (i < data.length && filterOffers.length < MAX_OFFERS) {
-    result = filters.every((filter) => (filter.value === DEFAUL_VALUE) ? true : filterSelector[filter.id(data[i], filter)]);
+  while (index < data.length && filterOffers.length < MAX_OFFERS) {
+    result = filters.every((filter) => (filter.value === DEFAUL_VALUE) ? true : filterSelector[filter.id](data[index], filter));
     if (result) {
-      filterOffers.push(data[i]);
+      filterOffers.push(data[index]);
     }
-    i++;
+
+    index++;
+
   }
   return filterOffers;
 
 };
-
 
 export {filterSelector, filterData, MAX_OFFERS};

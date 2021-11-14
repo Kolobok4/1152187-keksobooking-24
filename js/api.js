@@ -4,19 +4,17 @@ const Urls = {
 };
 
 const request = (onSuccess, onError, method, formData) => {
-  fetch(
-    Urls[method],
+  fetch(Urls[method],
     {
       method: method,
       body: formData,
-    },
-  )
+    })
     .then((response) => response.json())
     .then((data) => {
       onSuccess(data);
     })
-    .catch(() => {
-      onError();
+    .catch((err) => {
+      onError(err);
     });
 };
 

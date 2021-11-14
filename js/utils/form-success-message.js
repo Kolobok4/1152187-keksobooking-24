@@ -1,4 +1,4 @@
-import {closeAlert} from './close-alert.js';
+import {closeAlert} from './close-message.js';
 
 const successAlert = document.querySelector('#success').content.querySelector('.success');
 

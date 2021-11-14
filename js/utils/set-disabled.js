@@ -20,5 +20,5 @@ const toggleClassDisabled  = () => {
 
 toggleClassDisabled();
 
-export {setDisabledState,toggleClassDisabled};
+export {setDisabledState,toggleClassDisabled, mapFilters};
 

@@ -1,5 +1,6 @@
 import { DefaultCoordinate, resetButton} from '../form-validate.js';
-import {map, mainPinMarker, MAP_ZOOM} from '../map.js';
+import {mainPinMarker} from '../main-pin-marker.js';
+import {map, MAP_ZOOM} from '../load-map.js';
 
 
 const resetMap = () => {
