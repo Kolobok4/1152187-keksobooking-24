@@ -28,7 +28,9 @@ const onError = () => {
 };
 
 
-const map = L.map('map-canvas');
+const map = L.map('map-canvas', {
+  closePopupOnClick: false,
+});
 
 L.tileLayer(
   TILE_LAYER,

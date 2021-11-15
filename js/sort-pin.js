@@ -23,9 +23,12 @@ const filterSelector  = {
   'housing-rooms': (data, filter) => filter.value === data.offer.rooms.toString(),
   'housing-guests': (data, filter) => filter.value === data.offer.guests.toString(),
   'housing-features': (data, filter) => {
-    const checkListElements = Array.from(filter.querySelectorAll('input[type="checkbox"]:checked'));
+    if (data.offer.features) {
+      const checkListElements = Array.from(filter.querySelectorAll('input[type="checkbox"]:checked'));
 
-    return checkListElements.every((checkbox) => data.offer.features.some((feature) => feature === checkbox.value));
+      return checkListElements.every((checkbox) => data.offer.features.some((feature) => feature === checkbox.value));
+    }
+    return false;
   },
 };
 
@@ -47,4 +50,4 @@ const filterData = (data) => {
 
 };
 
-export {filterSelector, filterData, MAX_OFFERS};
+export {filterSelector, filterData, MAX_OFFERS, filters};

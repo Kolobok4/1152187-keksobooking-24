@@ -2,7 +2,6 @@ import { DefaultCoordinate, resetButton} from '../form-validate.js';
 import {mainPinMarker} from '../main-pin-marker.js';
 import {map, MAP_ZOOM} from '../load-map.js';
 
-
 const resetMap = () => {
 
   mainPinMarker.setLatLng({
@@ -20,3 +19,4 @@ const resetMap = () => {
 resetButton.addEventListener('click', resetMap);
 
 export {resetMap};
+

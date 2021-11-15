@@ -23,8 +23,8 @@ const createPin = (points) => {
     const { location } = point;
     const marker = L.marker(
       {
-        lat: location.location.lat,
-        lng: location.location.lng,
+        lat: location.lat,
+        lng: location.lng,
       },
       {
         icon: pinIcon,
