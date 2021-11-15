@@ -5,10 +5,10 @@ const typeAd = adForm.querySelector('#type');
 const timeIn = adForm.querySelector('#timein');
 const timeOut = adForm.querySelector('#timeout');
 const timeAd = adForm.querySelector('.ad-form__element--time');
-const guestNumber = document.querySelectorAll('#capacity > option');
-const roomNumber = document.querySelector('#room_number');
-const addressAd = document.querySelector('#address');
-const resetButton = document.querySelector('.ad-form__reset');
+const guestNumber = adForm.querySelectorAll('#capacity > option');
+const roomNumber = adForm.querySelector('#room_number');
+const addressAd = adForm.querySelector('#address');
+const resetButton = adForm.querySelector('.ad-form__reset');
 
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;

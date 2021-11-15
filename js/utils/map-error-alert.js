@@ -1,5 +1,5 @@
 const ALERT_SHOW_TIME = 5000;
-const MESSAGE_MAP_FAIL_DATA = 'Не удалось загрузить данные всех меток на карте. Данные с сервера получены не в полном объеме';
+const MESSAGE_MAP_FAIL_DATA = 'Не удалось загрузить данные меток на карте. Данные с сервера получены не в полном объеме';
 
 const mapErrorAlert = (message) => {
   const alertContainer = document.createElement('div');
