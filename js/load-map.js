@@ -4,6 +4,7 @@ import {filterData, MAX_OFFERS} from './sort-pin.js';
 import {mapFilters, toggleClassDisabled} from './utils/set-disabled.js';
 import {addressAd, DefaultCoordinate} from './form-validate.js';
 import {createPin, removePin} from './pin-marker.js';
+import {debounce} from './utils/debounce.js';
 
 const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const TILE_LAYER_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
@@ -11,10 +12,11 @@ const MAP_ZOOM = 13;
 
 let adverts = [];
 
-const onMapFilterChange = () => {
+
+const onMapFilterChange = debounce(() => {
   removePin();
   createPin(filterData(adverts));
-};
+});
 
 const onSuccess = (data) => {
   adverts = data.slice();
