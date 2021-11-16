@@ -32,7 +32,7 @@ const photosList = (element, selector, photos) => {
   }
 };
 
-const featuresList = (element, selector, features) => {
+const removeFeaturesList = (element, selector, features) => {
 
   if (features) {
     const featureElement= element.querySelector(selector);
@@ -53,7 +53,7 @@ const featuresList = (element, selector, features) => {
 
 };
 
-const textDescription = (element, selector, text) => {
+const removeTextPopup = (element, selector, text) => {
 
   if (text) {
     element.querySelector(selector).textContent = text;
@@ -62,20 +62,29 @@ const textDescription = (element, selector, text) => {
   }
 };
 
+const removeAvatarPopup = (element, selector, photo) => {
+  if (photo) {
+    element.querySelector(selector).src = photo;
+  } else {
+    element.querySelector(selector).remove();
+  }
+};
+
+
 const renderSimilarPopup  = (card) => {
   const offer = card.offer;
   const author = card.author;
   const cardElement = similarTemplate.cloneNode(true);
-  cardElement.querySelector('.popup__title').textContent = offer.title;
-  cardElement.querySelector('.popup__text--address').textContent = offer.address;
-  cardElement.querySelector('.popup__text--price').textContent = `${offer.price}  ₽/ночь`;
-  cardElement.querySelector('.popup__type').textContent = buildingType[offer.type];
-  cardElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
-  cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
-  cardElement.querySelector('.popup__avatar').src = author.avatar;
+  removeTextPopup(cardElement,'.popup__title', offer.title);
+  removeTextPopup(cardElement,'.popup__text--address', offer.address);
+  removeTextPopup(cardElement,'.popup__text--price', `${offer.price}  ₽/ночь`);
+  removeTextPopup(cardElement,'.popup__type', buildingType[offer.type]);
+  removeTextPopup(cardElement,'.popup__text--capacity',`${offer.rooms} комнаты для ${offer.guests} гостей`);
+  removeTextPopup(cardElement,'.popup__text--time',`Заезд после ${offer.checkin}, выезд до ${offer.checkout}`);
+  removeAvatarPopup(cardElement,'.popup__avatar', author.avatar);
   photosList(cardElement, '.popup__photos', offer.photos);
-  featuresList(cardElement, '.popup__features', offer.features);
-  textDescription(cardElement, '.popup__description', offer.description);
+  removeFeaturesList(cardElement, '.popup__features', offer.features);
+  removeTextPopup(cardElement, '.popup__description', offer.description);
 
   return cardElement;
 
