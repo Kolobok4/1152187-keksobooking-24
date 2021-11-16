@@ -53,4 +53,4 @@ map.on('load', () => {
   lng: DefaultCoordinate.LNG,
 }, MAP_ZOOM);
 
-export {map, layerGroup, MAP_ZOOM};
+export {map, layerGroup, MAP_ZOOM, adverts};
