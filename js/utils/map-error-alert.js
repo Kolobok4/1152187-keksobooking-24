@@ -1,4 +1,4 @@
-import {toggleClassDisabled} from './set-disabled.js';
+
 
 const ALERT_SHOW_TIME = 5000;
 const MESSAGE_MAP_FAIL_DATA = 'Не удалось загрузить данные меток на карте. Данные с сервера получены не в полном объеме';
@@ -20,7 +20,7 @@ const mapErrorAlert = (message) => {
   alertContainer.textContent = message;
 
   document.body.append(alertContainer);
-  toggleClassDisabled();
+
   setTimeout(() => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);

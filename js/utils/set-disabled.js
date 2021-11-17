@@ -9,16 +9,22 @@ const setDisabledState = () => {
   });
 };
 
-const toggleClassDisabled  = () => {
+const toggleFormsDisabled  = () => {
   adForm.classList.toggle('ad-form--disabled');
-  mapFilters.classList.toggle('map__filters--disabled');
 
   setDisabledState();
-
   addressAd.readOnly = true;
 };
 
-toggleClassDisabled();
+const toggleFiltersDisabled  = () => {
 
-export {setDisabledState,toggleClassDisabled, mapFilters};
+  mapFilters.classList.toggle('map__filters--disabled');
+
+};
+
+
+toggleFormsDisabled();
+toggleFiltersDisabled();
+
+export {setDisabledState,toggleFormsDisabled, toggleFiltersDisabled, mapFilters};
 
