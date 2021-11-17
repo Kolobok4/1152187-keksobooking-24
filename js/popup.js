@@ -12,7 +12,7 @@ const similarTemplate = document.querySelector('#card')
   .querySelector('.popup');
 
 
-const photosList = (element, selector, photos) => {
+const removePhotosList = (element, selector, photos) => {
 
   if (photos) {
     const photoElement = element.querySelector(selector);
@@ -82,7 +82,7 @@ const renderSimilarPopup  = (card) => {
   removeTextPopup(cardElement,'.popup__text--capacity',`${offer.rooms} комнаты для ${offer.guests} гостей`);
   removeTextPopup(cardElement,'.popup__text--time',`Заезд после ${offer.checkin}, выезд до ${offer.checkout}`);
   removeAvatarPopup(cardElement,'.popup__avatar', author.avatar);
-  photosList(cardElement, '.popup__photos', offer.photos);
+  removePhotosList(cardElement, '.popup__photos', offer.photos);
   removeFeaturesList(cardElement, '.popup__features', offer.features);
   removeTextPopup(cardElement, '.popup__description', offer.description);
 
