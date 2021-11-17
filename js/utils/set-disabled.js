@@ -11,15 +11,12 @@ const setDisabledState = () => {
 
 const toggleFormsDisabled  = () => {
   adForm.classList.toggle('ad-form--disabled');
-
   setDisabledState();
   addressAd.readOnly = true;
 };
 
 const toggleFiltersDisabled  = () => {
-
   mapFilters.classList.toggle('map__filters--disabled');
-
 };
 
 

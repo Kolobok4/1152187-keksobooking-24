@@ -15,7 +15,6 @@ const clearPageElements = () => {
   priceAd.min = '';
   priceAd.min = MIN_PRICE;
   priceAd.placeholder = MIN_PRICE;
-
 };
 
 resetButton.addEventListener('click', (evt) => {
