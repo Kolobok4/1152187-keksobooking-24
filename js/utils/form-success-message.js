@@ -7,7 +7,6 @@ const successAlert = document.querySelector('#success').content.querySelector('.
 const showFormSuccessAlert = () => {
   const successElement = successAlert.cloneNode(true);
   document.body.appendChild(successElement);
-
   closeAlert(successElement);
   clearPageElements();
   resetMap();

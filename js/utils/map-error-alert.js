@@ -16,9 +16,7 @@ const mapErrorAlert = (message) => {
   alertContainer.style.fontSize = fontSizeErrorAlert;
   alertContainer.style.textAlign = 'center';
   alertContainer.style.backgroundColor = 'red';
-
   alertContainer.textContent = message;
-
   document.body.append(alertContainer);
 
   setTimeout(() => {

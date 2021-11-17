@@ -48,7 +48,6 @@ const layerGroup = L.layerGroup().addTo(map);
 
 
 map.on('load', () => {
-
   request(onSuccess, onError, 'GET');
   addressAd.value = `${DefaultCoordinate.LAT  }, ${ DefaultCoordinate.LNG}`;
 }).setView({
