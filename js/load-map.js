@@ -1,7 +1,7 @@
 import {request} from './api.js';
 import {mapErrorAlert, MESSAGE_MAP_FAIL_DATA} from './utils/map-error-alert.js';
 import {filterData, MAX_OFFERS} from './sort-pin.js';
-import {mapFilters, toggleClassDisabled} from './utils/set-disabled.js';
+import {mapFilters, toggleFiltersDisabled, toggleFormsDisabled} from './utils/set-disabled.js';
 import {addressAd, DefaultCoordinate} from './form-validate.js';
 import {createPin, removePin} from './pin-marker.js';
 import {debounce} from './utils/debounce.js';
@@ -19,14 +19,17 @@ const onMapFilterChange = debounce(() => {
 });
 
 const onSuccess = (data) => {
+  toggleFormsDisabled();
+  toggleFiltersDisabled();
   adverts = data.slice();
   createPin(adverts.slice(0, MAX_OFFERS));
-
   mapFilters.addEventListener('change', onMapFilterChange);
 };
 
 const onError = () => {
+  toggleFormsDisabled();
   mapErrorAlert(MESSAGE_MAP_FAIL_DATA);
+
 };
 
 
@@ -45,7 +48,7 @@ const layerGroup = L.layerGroup().addTo(map);
 
 
 map.on('load', () => {
-  toggleClassDisabled();
+
   request(onSuccess, onError, 'GET');
   addressAd.value = `${DefaultCoordinate.LAT  }, ${ DefaultCoordinate.LNG}`;
 }).setView({
