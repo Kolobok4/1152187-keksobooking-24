@@ -4,6 +4,7 @@ import {map} from '../load-map.js';
 import {mainPinMarker} from '../main-pin-marker.js';
 import {DefaultCoordinate} from '../form-validate.js';
 
+const MIN_PRICE = 1000;
 
 const clearPageElements = () => {
   adForm.reset();
@@ -12,8 +13,8 @@ const clearPageElements = () => {
   addressAd.value = `${DefaultCoordinate.LAT}, ${DefaultCoordinate.LNG}`;
   map.closePopup();
   priceAd.min = '';
-  priceAd.min = 1000;
-  priceAd.placeholder = 1000;
+  priceAd.min = MIN_PRICE;
+  priceAd.placeholder = MIN_PRICE;
 
 };
 
