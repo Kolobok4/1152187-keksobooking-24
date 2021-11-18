@@ -1,27 +1,28 @@
 import {addressAd, adForm} from '../form-validate.js';
 
 const mapFilters = document.querySelector('.map__filters');
-const disabledFields = document.querySelectorAll('select.map__filter, fieldset');
+const disabledMapFilters = mapFilters.querySelectorAll('select.map__filter, fieldset');
+const disabledFormFieldset = adForm.querySelectorAll('fieldset');
 
-const setDisabledState = () => {
-  disabledFields.forEach((element) => {
-    element.disabled = !element.disabled;
-  });
-};
 
 const toggleFormsDisabled  = () => {
   adForm.classList.toggle('ad-form--disabled');
-  setDisabledState();
+  disabledFormFieldset.forEach((element) => {
+    element.disabled = !element.disabled;
+  });
   addressAd.readOnly = true;
 };
 
 const toggleFiltersDisabled  = () => {
   mapFilters.classList.toggle('map__filters--disabled');
+  disabledMapFilters.forEach((element) => {
+    element.disabled = !element.disabled;
+  });
 };
 
 
 toggleFormsDisabled();
 toggleFiltersDisabled();
 
-export {setDisabledState,toggleFormsDisabled, toggleFiltersDisabled, mapFilters};
+export {toggleFormsDisabled, toggleFiltersDisabled, mapFilters};
 
