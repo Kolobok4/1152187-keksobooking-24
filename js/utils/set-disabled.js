@@ -7,6 +7,7 @@ const disabledFormFieldset = adForm.querySelectorAll('fieldset');
 
 const toggleFormsDisabled  = () => {
   adForm.classList.toggle('ad-form--disabled');
+
   disabledFormFieldset.forEach((element) => {
     element.disabled = !element.disabled;
   });
@@ -15,6 +16,7 @@ const toggleFormsDisabled  = () => {
 
 const toggleFiltersDisabled  = () => {
   mapFilters.classList.toggle('map__filters--disabled');
+
   disabledMapFilters.forEach((element) => {
     element.disabled = !element.disabled;
   });
